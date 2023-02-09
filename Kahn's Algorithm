@@ -1,0 +1,57 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+class Solution {
+public:
+	vector<int> topo(int N, vector<int> adj[]) {
+        queue<int> q; 
+	    vector<int> indegree(N, 0); 
+      //Find in-degree of all nodes and fill them in an array
+	    for(int i = 0;i<N;i++) {
+	        for(auto it: adj[i]) {
+	            indegree[it]++; 
+	        }
+	    }
+	    //Queue data structure and add nodes that have in-degree is 0
+	    for(int i = 0;i<N;i++) {
+	        if(indegree[i] == 0) {
+	            q.push(i); 
+	        }
+	    }
+	    vector<int> topo;
+	    while(!q.empty()) {
+	        int node = q.front(); //Take the top/peek node from Queue ( let the popped node be x), add this x to our answer
+	        q.pop(); 
+	        topo.push_back(node);
+	        for(auto it : adj[node]) { //BFS
+	            indegree[it]--;  //Now take neighbour nodes of popped nodes and reduce their in-degree by 1.
+	            if(indegree[it] == 0) {  //Check if any of the popped element nodes in degree becomes 0, after reducing in-degree by 1 if it happens then add this neighbour element to the queue for which the in-degree became zero.
+	                q.push(it); 
+	            }
+	        }
+	    }
+	    return topo;
+	}
+};
+
+
+
+int main()
+{
+
+    	vector<int> adj[6];
+    	adj[5].push_back(2);
+    	adj[5].push_back(0);
+    	adj[4].push_back(0);
+    	adj[4].push_back(1);
+    	adj[3].push_back(1);
+    	adj[2].push_back(3);
+
+    	Solution obj;
+    	vector<int> v=obj.topo(6, adj);
+    	for(auto it:v)
+    	cout<<it<<" ";
+    
+
+    return 0;
+}
