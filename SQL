@@ -88,5 +88,21 @@ VALUES
  
 
 
+DROP TABLE Order;
+// CASCADED DELETE ON Customer DELETE Order related to that customer gets deleted
+CREATE TABLE Order (
+  OrderId INT NOT NULL PRIMARY KEY,
+  DeliveryDate DATE,
+  CustomerId INT,
+  FOREIGN KEY(CustomerId) references Customer(id) ON DELETE CASCADE
+);
 
+DROP TABLE Order;
+// CASCADED DELETE ON Customer DELETE CustomeId becomes NULL
+CREATE TABLE Order (
+  OrderId INT NOT NULL PRIMARY KEY,
+  DeliveryDate DATE,
+  CustomerId INT,
+  FOREIGN KEY(CustomerId) references Customer(id) ON DELETE SET NULL
+);
 
