@@ -135,7 +135,15 @@ SELECT * FROM Table2;
 
 //SELECT * FROM Table1 intersect SELECT * FROM Table2; not possible so we need to emulate it
 
-SELECT DISTINCT Id FROM T1 INNER JOIN T2  USING(id);
+SELECT Id FROM T1 INNER JOIN T2  USING(id);
 
 // THERE IS NO MINUS KEYWORD IN SQL SO WE NEED TO EMULATE
 SELECT ID FROM T1 LEFT JOIN T2 USING (ID) WHERE T2.ID IS NULL
+
+SELECT MAX(AGE) FROM (SELECT AGE FROM Employee WHERE Fname LIKE '%A%') AS Temp;  // we needed to alias the returned table;
+
+//correlated subquery 
+
+//sql is 1 indexed
+
+
