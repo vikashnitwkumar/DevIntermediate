@@ -1,4 +1,4 @@
- steps to use MySql;
+ //steps to use MySql;
  
  CREATE DATABSE DatabaseName; //  created a database
  USE DatabaseName;   // specify that we are using this database
@@ -7,4 +7,12 @@
  id INT PRIMARY KEY,
  name VARCHAR(255)
  );
-  INSERT INTO student values(1,'Ankit');
+ INSERT INTO student values(1,'Ankit');
+ 
+ DROP DATABASE IF EXISTS temp; // to drop with check
+ 
+ 
+ 
+ //
+ CREATE DATABASE org;
+ show 
