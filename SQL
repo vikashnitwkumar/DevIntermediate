@@ -15,4 +15,14 @@
  
  //
  CREATE DATABASE org;
- show 
+ SHOW DATABASES;
+ USE org;
+ 
+ CREATE TABLE worker(
+ worker_Id  INT   NOT NULL PRIMARY KEY AUTO INCREMENT,
+ first_name CHAR(25),
+ last_name CHAR(25),
+ salary INT ,
+ joining_date DATE,
+ department CAHR(25)
+ );
