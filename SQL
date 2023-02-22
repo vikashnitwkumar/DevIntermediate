@@ -106,3 +106,36 @@ CREATE TABLE Order (
   FOREIGN KEY(CustomerId) references Customer(id) ON DELETE SET NULL
 );
 
+
+//replace vs uodate : replace is upsert in salesforce update is like update
+
+// left join right join full join  innerjoin 
+
+SELECT * FROM  LeftTable as l LEFT JOIN RightTable as r
+   on l.key = r.key
+ UNION
+SELECT * FROM  LeftTable as l RIGHT JOIN RightTable as r
+   on l.key = r.key
+
+// cross join results m*n entries  
+// self join when we have unary relationship
+
+SELECT e1.id, e2.id from employee as e1 inner join employee as e2 on e1.id=e2.id;
+
+// we can also join tables without using the join keyword
+select * from employee, project where employee.id=project.id;
+
+// union intersection minus 3 sets are possible
+// set applies on rows, joins applies on column
+
+SELECT * FROM Table1
+UNION
+SELECT * FROM Table2;
+
+
+//SELECT * FROM Table1 intersect SELECT * FROM Table2; not possible so we need to emulate it
+
+SELECT DISTINCT Id FROM T1 INNER JOIN T2  USING(id);
+
+// THERE IS NO MINUS KEYWORD IN SQL SO WE NEED TO EMULATE
+SELECT ID FROM T1 LEFT JOIN T2 USING (ID) WHERE T2.ID IS NULL
