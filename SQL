@@ -1,5 +1,14 @@
  //steps to use MySql;
  
+ //sql naming best practice: use PascalCaseNamingConvention, for camelCasing the terms 
+ //UpperCamelCase and lowerCamelCase are often used. Pascal case would be equivalent to UpperCamelCase 
+ //Don't use symbols or alphanumeric characters including _ -, these affect the performance of the server
+ // avoid common keywords used in other programming languages like class function methods string 
+ // avoid quotation marks
+ // white whitespace in Identifiers, don't use abbreviations,
+ // avoid using reserve words
+ 
+ 
  CREATE DATABSE DatabaseName; //  created a database
  USE DatabaseName;   // specify that we are using this database
  
@@ -18,11 +27,66 @@
  SHOW DATABASES;
  USE org;
  
- CREATE TABLE worker(
- worker_Id  INT   NOT NULL PRIMARY KEY AUTO INCREMENT,
- first_name CHAR(25),
- last_name CHAR(25),
- salary INT ,
- joining_date DATE,
- department CAHR(25)
- );
+CREATE TABLE Worker(
+  WorkerId  INT   NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  FirstName CHAR(25),
+  LastName CHAR(25),
+  Salary INT ,
+  JoiningDate DATE,
+  Department CHAR(25)
+);
+INSERT INTO Worker (FirstName, LastName, Salary, JoiningDate, Department) VALUES 
+('John', 'Doe', 50000, '2020-01-01', 'Finance'),
+('Jane', 'Smith', 60000, '2019-05-15', 'Marketing'),
+('Bob', 'Johnson', 45000, '2020-07-01', 'Sales'),
+('Samantha', 'Lee', 55000, '2018-11-01', 'IT'),
+('David', 'Kim', 70000, '2019-02-15', 'Engineering');
+
+SELECT * FROM Worker;
+
+// dual table -> dummy table;
+SELECT 5+10;
+SELECT NOW;
+SELECT CURDATE();
+SLEECT CURTIME();
+
+// WILL return with salary inclusive of 55000 and 77000
+SELECT Name, Salary FROM Worker WHERE Salary BETWEEN 55000 AND 77000;
+
+SELECT Name FROM Worker WHERE Department NOT IN ('hr', 'it');
+
+CREATE TABLE Customer (
+  id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  cname VARCHAR(50),
+  gender CHAR(1),
+  address VARCHAR(100),
+  city VARCHAR(50),
+  pincode VARCHAR(10)
+);
+
+INSERT INTO Customer (cname, gender, address, city, pincode)
+VALUES
+  ('John Smith', 'M', '123 Main St', 'New York', '10001'),
+  ('Jane Doe', 'F', '456 Park Ave', 'Los Angeles', '90001'),
+  ('Bob Johnson', 'M', '789 Broadway', 'Chicago', '60601'),
+  ('Alice Williams', 'F', '111 State St', 'Boston', '02109'),
+  ('Mike Davis', 'M', '222 Elm St', 'San Francisco', NULL);
+  
+ SELECT * FROM Customer WHERE Pincode IS NULL;
+ 
+ 
+ //WILDCARDS (% -> ANY NUMBER OF CHARACTERS, _ -> ONE CHARACTER)
+ 
+ SELECT * FROM Worker WHERE FirstName LIKE '_OHN';
+ 
+ // ORDER BY ASC AND DESC  ASC IS DEFAULT
+ 
+ SELECT * FROM Worker ORDER BY Salary DESC;
+ 
+ 
+ 
+ 
+
+
+
+
