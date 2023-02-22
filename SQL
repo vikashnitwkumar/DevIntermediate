@@ -1,0 +1,10 @@
+ steps to use MySql;
+ 
+ CREATE DATABSE DatabaseName; //  created a database
+ USE DatabaseName;   // specify that we are using this database
+ 
+ CREATE TABLE student (
+ id INT PRIMARY KEY,
+ name VARCHAR(255)
+ );
+  INSERT INTO student values(1,'Ankit');
